@@ -2,12 +2,12 @@
 
 int main() {
 
-    DigitalOut red(PTB22);
+    DigitalOut red(D5);
 
     while(1) {
       red.write(0);
-      wait(0.5);
+      wait_ms(3)
       red.write(1);
-      wait(0.5);
+      wait_ms(1);
     }
 }
