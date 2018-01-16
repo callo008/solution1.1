@@ -6,8 +6,8 @@ int main() {
 
     while(1) {
       red.write(0);
-      wait_ms(3)
+      wait(0.6);
       red.write(1);
-      wait_ms(1);
+      wait(0.2);
     }
 }
