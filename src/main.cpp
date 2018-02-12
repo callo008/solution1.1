@@ -2,9 +2,9 @@
 
 enum { Red, Green, Blue};
 DigitalOut LED[] = {
-  PTB22,
-  PTE26,
-  PTC21
+  DigitalOut(PTB22,1),
+  DigitalOut(PTE26,1),
+  DigitalOut(PTC21,1)
 };
 
 void LEDon(int n) {
@@ -15,10 +15,8 @@ void LEDoff(int n) {
 }
 
 int main() {
-    LEDoff(Red);
-    LEDoff(Green);
-    LEDoff(Blue);
-    
+
+
     while(1) {
       int k;
       for( k=0 ; k<3 ; k++){
