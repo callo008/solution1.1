@@ -1,30 +1,24 @@
 #include <mbed.h>
 
-enum { Red, Green, Blue};
-DigitalOut LED[] = {
-  PTB22,
-  PTE26,
-  PTC21
+class LED {
+  DigitalOut pin;
+public:
+  LED(PinName p) : pin(p,1) {}
+  void  on(void) { pin.write(0);}
+  void off(void) { pin.write(1);}
 };
+LED light[] = { LED(PTB22), LED(PTE26), LED(PTB21) };
+enum { Red, Green, Blue};
 
-void LEDon(int n) {
-  LED[n].write(0);
-}
-void LEDoff(int n) {
-  LED[n].write(1);
-}
 
 int main() {
-    LEDoff(Red);
-    LEDoff(Green);
-    LEDoff(Blue);
-    
+
     while(1) {
       int k;
       for( k=0 ; k<3 ; k++){
-        LEDon(k);
+        light[k].on();
         wait(0.5);
-        LEDoff(k);
+        light[k].off();
       }
     }
 }
