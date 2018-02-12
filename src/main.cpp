@@ -1,13 +1,30 @@
 #include <mbed.h>
 
+enum { Red, Green, Blue};
+DigitalOut LED[] = {
+  PTB22,
+  PTE26,
+  PTC21
+};
+
+void LEDon(int n) {
+  LED[n].write(0);
+}
+void LEDoff(int n) {
+  LED[n].write(1);
+}
+
 int main() {
-
-    DigitalOut red(D5);
-
+    LEDoff(Red);
+    LEDoff(Green);
+    LEDoff(Blue);
+    
     while(1) {
-      red.write(0);
-      wait(0.6);
-      red.write(1);
-      wait(0.2);
+      int k;
+      for( k=0 ; k<3 ; k++){
+        LEDon(k);
+        wait(0.5);
+        LEDoff(k);
+      }
     }
 }
